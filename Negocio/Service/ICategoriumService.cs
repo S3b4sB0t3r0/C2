@@ -14,7 +14,5 @@ namespace Negocio.Service
         Task<bool> Eliminar(int id);
         Task<Categorium> Obtener(int id);
         Task<IQueryable<Categorium>> ObtenerTodos();
-
-        Task<Categorium> ObtenerPorNombre(string nombre);
     }
 }

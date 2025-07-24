@@ -7,9 +7,9 @@ using Modelo;
 
 namespace Negocio.Service
 {
-    public class CategoriumService : ICategoriumService
+    public class EstadoOService : IEstadoOService
     {
-        public Task<bool> Actualizar(Categorium modelo)
+        public Task<bool> Actualizar(EstadoO modelo)
         {
             throw new NotImplementedException();
         }
@@ -19,17 +19,17 @@ namespace Negocio.Service
             throw new NotImplementedException();
         }
 
-        public Task<bool> Insertar(Categorium modelo)
+        public Task<bool> Insertar(EstadoO modelo)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Categorium> Obtener(int id)
+        public Task<EstadoO> Obtener(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<Categorium>> ObtenerTodos()
+        public Task<IQueryable<EstadoO>> ObtenerTodos()
         {
             throw new NotImplementedException();
         }

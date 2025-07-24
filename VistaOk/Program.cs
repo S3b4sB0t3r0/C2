@@ -1,42 +1,50 @@
 using System;
-using System.Configuration;
 using System.IO;
+using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Datos.DataContext;
-using Pomelo.EntityFrameworkCore.MySql;
-
+using Modelo;
+using Datos.Repositories;
+using Negocio.Service;
 
 
 namespace VistaOk
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        public static IServiceProvider ServiceProvider { get; private set; }
+
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            var services = new ServiceCollection();
 
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-
+            // Configurar archivo de configuración
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                   .Build();
+                .Build();
 
+            // Agregar la cadena de conexión
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 
+            services.AddDbContext<Session1Context>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-            var optionsBuilder = new DbContextOptionsBuilder<Session1Context>();
-            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            // Agregar servicios (inyección de dependencias)
+            services.AddScoped<IAbstractCRUD<Producto>, ProductoRepository>();
+            services.AddScoped<IProduc, ProductoService>();
 
-            var bulderMio = 
+            // Crear el ServiceProvider
+            ServiceProvider = services.BuildServiceProvider();
 
+            ApplicationConfiguration.Initialize();
+
+            // Resolves Form1 con sus dependencias (si las tiene)
+            var form1 = ServiceProvider.GetRequiredService<Form1>();
+            Application.Run(form1);
         }
     }
 }
