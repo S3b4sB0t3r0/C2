@@ -35,7 +35,10 @@ namespace VistaOk
 
             // Agregar servicios (inyección de dependencias)
             services.AddScoped<IAbstractCRUD<Producto>, ProductoRepository>();
-            services.AddScoped<IProduc, ProductoService>();
+            services.AddScoped<IProductoService, ProductoService>();
+
+            //Registrar ventanas 
+            services.AddTransient<Form1>();
 
             // Crear el ServiceProvider
             ServiceProvider = services.BuildServiceProvider();

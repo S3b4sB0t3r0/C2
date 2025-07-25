@@ -28,12 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            dataGridView1 = new DataGridView();
+            Activo = new DataGridViewComboBoxColumn();
+            ProductName = new DataGridViewCheckBoxColumn();
+            Category = new DataGridViewLinkColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Cost = new DataGridViewTextBoxColumn();
+            Action = new DataGridViewButtonColumn();
+            productoRepositoryBindingSource = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)productoRepositoryBindingSource).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Activo, ProductName, Category, Price, Cost, Action });
+            dataGridView1.DataSource = productoRepositoryBindingSource;
+            dataGridView1.Location = new Point(63, 165);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(643, 273);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Activo
+            // 
+            Activo.HeaderText = "Active";
+            Activo.Name = "Activo";
+            Activo.Resizable = DataGridViewTriState.True;
+            // 
+            // ProductName
+            // 
+            ProductName.HeaderText = "ProductName";
+            ProductName.Name = "ProductName";
+            // 
+            // Category
+            // 
+            Category.HeaderText = "Category";
+            Category.Name = "Category";
+            Category.Resizable = DataGridViewTriState.True;
+            Category.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Price
+            // 
+            Price.HeaderText = "Price";
+            Price.Name = "Price";
+            // 
+            // Cost
+            // 
+            Cost.HeaderText = "Cost";
+            Cost.Name = "Cost";
+            // 
+            // Action
+            // 
+            Action.HeaderText = "Action";
+            Action.Name = "Action";
+            // 
+            // productoRepositoryBindingSource
+            // 
+            productoRepositoryBindingSource.DataSource = typeof(Datos.Repositories.ProductoRepository);
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)productoRepositoryBindingSource).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
+        private BindingSource productoRepositoryBindingSource;
+        private DataGridViewComboBoxColumn Activo;
+        private DataGridViewCheckBoxColumn ProductName;
+        private DataGridViewLinkColumn Category;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Cost;
+        private DataGridViewButtonColumn Action;
     }
 }
