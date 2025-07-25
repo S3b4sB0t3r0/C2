@@ -30,13 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            Activo = new DataGridViewComboBoxColumn();
-            ProductName = new DataGridViewCheckBoxColumn();
+            productoRepositoryBindingSource = new BindingSource(components);
+            Activo = new DataGridViewTextBoxColumn();
+            ProductName = new DataGridViewTextBoxColumn();
             Category = new DataGridViewLinkColumn();
             Price = new DataGridViewTextBoxColumn();
             Cost = new DataGridViewTextBoxColumn();
             Action = new DataGridViewButtonColumn();
-            productoRepositoryBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productoRepositoryBindingSource).BeginInit();
             SuspendLayout();
@@ -53,16 +53,23 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // productoRepositoryBindingSource
+            // 
+            productoRepositoryBindingSource.DataSource = typeof(Datos.Repositories.ProductoRepository);
+            // 
             // Activo
             // 
             Activo.HeaderText = "Active";
             Activo.Name = "Activo";
             Activo.Resizable = DataGridViewTriState.True;
+            Activo.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // ProductName
             // 
             ProductName.HeaderText = "ProductName";
             ProductName.Name = "ProductName";
+            ProductName.Resizable = DataGridViewTriState.True;
+            ProductName.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Category
             // 
@@ -86,10 +93,6 @@
             Action.HeaderText = "Action";
             Action.Name = "Action";
             // 
-            // productoRepositoryBindingSource
-            // 
-            productoRepositoryBindingSource.DataSource = typeof(Datos.Repositories.ProductoRepository);
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -107,11 +110,11 @@
 
         private DataGridView dataGridView1;
         private BindingSource productoRepositoryBindingSource;
-        private DataGridViewComboBoxColumn Activo;
-        private DataGridViewCheckBoxColumn ProductName;
+        private DataGridViewTextBoxColumn ProductName;
         private DataGridViewLinkColumn Category;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Cost;
         private DataGridViewButtonColumn Action;
+        private DataGridViewTextBoxColumn Activo;
     }
 }
