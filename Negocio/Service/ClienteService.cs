@@ -3,35 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Datos.Repositories;
 using Modelo;
 
 namespace Negocio.Service
 {
     public class ClienteService : IClienteService
     {
-        public Task<bool> Actualizar(Cliente modelo)
+        private readonly IAbstractCRUD<Cliente> _ClienteRepo;
+        public ClienteService(IAbstractCRUD<Cliente> clienteRepo)
         {
-            throw new NotImplementedException();
+            _ClienteRepo = clienteRepo;
+        }
+        public async Task<bool> Actualizar(Cliente modelo)
+        {
+            return await _ClienteRepo.Actualizar(modelo);
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            return await _ClienteRepo.Eliminar(id);
         }
 
-        public Task<bool> Insertar(Cliente modelo)
+        public async Task<bool> Insertar(Cliente modelo)
         {
-            throw new NotImplementedException();
+            return await _ClienteRepo.Insertar(modelo);
         }
 
-        public Task<Cliente> Obtener(int id)
+        public async Task<Cliente> Obtener(int id)
         {
-            throw new NotImplementedException();
+            return await _ClienteRepo.Obtener(id);
         }
 
-        public Task<IQueryable<Cliente>> ObtenerTodos()
+        public async Task<IQueryable<Cliente>> ObtenerTodos()
         {
-            throw new NotImplementedException();
+            return await _ClienteRepo.ObtenerTodos();
         }
     }
 }

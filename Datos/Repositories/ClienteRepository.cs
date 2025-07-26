@@ -45,8 +45,8 @@ namespace Datos.Repositories
 
         public async Task<IQueryable<Cliente>> ObtenerTodos()
         {
-            IQueryable<Cliente> queryCategoriumSQL = _session1.Clientes;
-            return queryCategoriumSQL;
+            IQueryable<Cliente> queryClientedSQL = _session1.Clientes;
+            return queryClientedSQL;
         }
     }
 }

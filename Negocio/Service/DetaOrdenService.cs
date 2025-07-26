@@ -3,35 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Datos.Repositories;
 using Modelo;
 
 namespace Negocio.Service
 {
     public class DetaOrdenService : IDetaOrdenService
     {
-        public Task<bool> Actualizar(DetaOrden modelo)
+        private readonly IAbstractCRUD<DetaOrden> _DetaOrdenRepo;
+        public DetaOrdenService(IAbstractCRUD<DetaOrden> detaordenRepo)
         {
-            throw new NotImplementedException();
+            _DetaOrdenRepo = detaordenRepo;
+        }
+        public async Task<bool> Actualizar(DetaOrden modelo)
+        {
+            return await _DetaOrdenRepo.Actualizar(modelo);
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            return await _DetaOrdenRepo.Eliminar(id);
         }
 
-        public Task<bool> Insertar(DetaOrden modelo)
+        public async Task<bool> Insertar(DetaOrden modelo)
         {
-            throw new NotImplementedException();
+            return await _DetaOrdenRepo.Insertar(modelo);
         }
 
-        public Task<DetaOrden> Obtener(int id)
+        public async Task<DetaOrden> Obtener(int id)
         {
-            throw new NotImplementedException();
+            return await _DetaOrdenRepo.Obtener(id);
         }
 
-        public Task<IQueryable<DetaOrden>> ObtenerTodos()
+        public async Task<IQueryable<DetaOrden>> ObtenerTodos()
         {
-            throw new NotImplementedException();
+            return await _DetaOrdenRepo.ObtenerTodos();
         }
     }
 }

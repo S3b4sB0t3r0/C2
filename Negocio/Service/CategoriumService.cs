@@ -1,37 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Datos.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Modelo;
 
 namespace Negocio.Service
 {
     public class CategoriumService : ICategoriumService
     {
-        public Task<bool> Actualizar(Categorium modelo)
+        private readonly IAbstractCRUD<Categorium> _CategoriumRepo;
+        public CategoriumService(IAbstractCRUD<Categorium> categoriumRepo)
         {
-            throw new NotImplementedException();
+            _CategoriumRepo = categoriumRepo;
+        }
+        public async Task<bool> Actualizar(Categorium modelo)
+        {
+            return await _CategoriumRepo.Actualizar(modelo);
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            return await _CategoriumRepo.Eliminar(id);
         }
 
-        public Task<bool> Insertar(Categorium modelo)
+        public async Task<bool> Insertar(Categorium modelo)
         {
-            throw new NotImplementedException();
+            return await _CategoriumRepo.Insertar(modelo);
         }
 
-        public Task<Categorium> Obtener(int id)
+        public async Task<Categorium> Obtener(int id)
         {
-            throw new NotImplementedException();
+            return await _CategoriumRepo.Obtener(id);
         }
 
-        public Task<IQueryable<Categorium>> ObtenerTodos()
+        public async Task<IQueryable<Categorium>> ObtenerTodos()
         {
-            throw new NotImplementedException();
+            return await _CategoriumRepo.ObtenerTodos();
         }
     }
 }

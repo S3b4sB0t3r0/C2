@@ -3,35 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Datos.Repositories;
 using Modelo;
 
 namespace Negocio.Service
 {
     public class EstadoOService : IEstadoOService
     {
-        public Task<bool> Actualizar(EstadoO modelo)
+        private readonly IAbstractCRUD<EstadoO> _EstadosRepo;
+
+        public EstadoOService(IAbstractCRUD<EstadoO> estadosRepo)
         {
-            throw new NotImplementedException();
+            _EstadosRepo = estadosRepo;
+        }
+        public async Task<bool> Actualizar(EstadoO modelo)
+        {
+            return await _EstadosRepo.Actualizar(modelo);
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            return await _EstadosRepo.Eliminar(id);
         }
 
-        public Task<bool> Insertar(EstadoO modelo)
+        public async Task<bool> Insertar(EstadoO modelo)
         {
-            throw new NotImplementedException();
+            return await _EstadosRepo.Insertar(modelo);
         }
 
-        public Task<EstadoO> Obtener(int id)
+        public async Task<EstadoO> Obtener(int id)
         {
-            throw new NotImplementedException();
+            return await _EstadosRepo.Obtener(id);
         }
 
-        public Task<IQueryable<EstadoO>> ObtenerTodos()
+        public async Task<IQueryable<EstadoO>> ObtenerTodos()
         {
-            throw new NotImplementedException();
+            return await _EstadosRepo.ObtenerTodos();
         }
     }
 }
