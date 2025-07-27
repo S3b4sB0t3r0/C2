@@ -41,5 +41,7 @@ namespace Negocio.Service
         {
             return await _CategoriumRepo.ObtenerTodos();
         }
+
+
     }
 }

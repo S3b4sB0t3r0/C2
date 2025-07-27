@@ -174,7 +174,7 @@ public partial class Session1Context : DbContext
 
             entity.ToTable("productos");
 
-            entity.HasIndex(e => e.IdCategoria, "categoria_productos_fk");
+            entity.HasIndex(e => e.IdCate, "categoria_productos_fk");
 
             entity.Property(e => e.IdProd)
                 .ValueGeneratedNever()
@@ -192,9 +192,9 @@ public partial class Session1Context : DbContext
             entity.Property(e => e.FechaIntro)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_intro");
-            entity.Property(e => e.IdCategoria)
+            entity.Property(e => e.IdCate)
                 .HasColumnType("int(11)")
-                .HasColumnName("id_categoria");
+                .HasColumnName("id_cate");
             entity.Property(e => e.NombreProd)
                 .HasMaxLength(50)
                 .HasColumnName("nombre_prod");
@@ -203,7 +203,7 @@ public partial class Session1Context : DbContext
                 .HasColumnName("precio");
 
             entity.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.Productos)
-                .HasForeignKey(d => d.IdCategoria)
+                .HasForeignKey(d => d.IdCate)
                 .HasConstraintName("categoria_productos_fk");
         });
 

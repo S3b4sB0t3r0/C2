@@ -9,7 +9,7 @@ public partial class Producto
 
     public string? NombreProd { get; set; }
 
-    public int? IdCategoria { get; set; }
+    public int? IdCate { get; set; }
 
     public decimal? Precio { get; set; }
 
